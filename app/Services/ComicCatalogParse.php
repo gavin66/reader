@@ -71,7 +71,7 @@ class ComicCatalogParse
         $xpath  = new \DOMXPath( $dom );
         $result = [
             'platform'  => 'manhuafen',
-            'is_follow' => boolval( ComicFollow::where( [ [ 'platform', 'manhuafen' ], [ 'comic_id', $comicId ] ] )->count() ),
+            'is_follow' => boolval( ComicFollow::where( [ [ 'member_id', Request::user()->id ], [ 'platform', 'manhuafen' ], [ 'comic_id', $comicId ] ] )->count() ),
             'catalog'   => [],
         ];
 
