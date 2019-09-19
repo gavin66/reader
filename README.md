@@ -20,7 +20,7 @@ Web 版网络小说与漫画阅读器
 1. 下载项目
 
 ```sh
-$ git https://github.com/gavin66/reader.git
+$ git clone https://github.com/gavin66/reader.git
 ```
 
 2. 创建数据库
@@ -36,10 +36,11 @@ $ git https://github.com/gavin66/reader.git
 # 使用 composer 安装依赖
 $ composer install
 
+# 复制 .env.example 重命名为 .env 并修改(数据库,Redis,图片代理等)
+$ cp .env.example .env && vim .env
+
 # 生成应用密钥
 $ php artisan  key:generate
-
-# 修改 .env 应用配置文件(数据库,Redis,图片代理等)
 
 # 新增一个用户,用于前端登录
 $ php artisan user:generate --email your-email@gmail.com --password your-password

@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Http\Controllers\Controller;
 use App\Models\ComicFollow;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Request;
 
 class ComicCatalogParse
 {
@@ -29,7 +30,7 @@ class ComicCatalogParse
         $xpath  = new \DOMXPath( $dom );
         $result = [
             'platform'  => 'qq',
-            'is_follow' => boolval( ComicFollow::where( [ [ 'platform', 'qq' ], [ 'comic_id', $comicId ] ] )->count() ),
+            'is_follow' => boolval( ComicFollow::where( [ [ 'member_id', Request::user()->id ], [ 'platform', 'qq' ], [ 'comic_id', $comicId ] ] )->count() ),
             'catalog'   => [],
         ];
 

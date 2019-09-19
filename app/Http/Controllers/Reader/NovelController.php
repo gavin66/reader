@@ -79,7 +79,7 @@ class NovelController extends Controller
         @$dom->loadHTML( $html );
         $xpath  = new \DOMXPath( $dom );
         $result = [
-            'is_follow' => boolval( NovelFollow::where( 'catalog_url', $url )->count() ),
+            'is_follow' => boolval( NovelFollow::where( [ [ 'member_id', $request->user()->id ], [ 'catalog_url', $url ] ] )->count() ),
             'catalog'   => [],
         ];
 
